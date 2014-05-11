@@ -31,6 +31,8 @@ def cagr(request):
                             content_type="application/json",
                             status=status.HTTP_400_BAD_REQUEST)
 
-    return HttpResponse(json.dumps({"result": math.cagr(i_0, rate, years)}),
+    series = [math.cagr(i_0, rate, i) for i in range(0, years + 1)]
+
+    return HttpResponse(json.dumps({"result": math.cagr(i_0, rate, years), 'series': series}),
                         content_type="application/json",
                         status=status.HTTP_200_OK)

@@ -3,6 +3,11 @@
 {% load i18n %}
 {% block css %}
     {#    <link rel="stylesheet" href="{% static 'style.css' %}">#}
+    <title></title>
+    <!-- Load css for c3 basic styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/c3.css' %}">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css">
+
 {% endblock %}
 {% block page_title %}Calculations{% endblock %}
 {% block body_class %}{{ block.super }}{% endblock %}
@@ -68,11 +73,18 @@
                         <input class="form-control" id="result" placeholder="Result">
                     </div>
                 </div>
-
-
             </form>
 
+            <h1 class="hidden">Chart</h1>
 
+            <div class='chart'>
+                <div id='chart'></div>
+            </div>
+
+            <h1 class="hidden">Values</h1>
+
+            <div id="values">
+            </div>
         </div>
     </div>
 
@@ -80,8 +92,13 @@
 {% endblock %}
 
 {% block javascript_library %}
+    <script src="//cdn.datatables.net/1.10.0/js/jquery.dataTables.js"></script>
     <script src="{% static 'js/main.js' %} "></script>
     <script src="{% static 'lib/parsley.dev.js' %} "></script>
+
+    <script src="{% static 'lib/d3.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'lib/c3.min.js' %}"></script>
+
 {% endblock %}
 
 {% block javascript %}
